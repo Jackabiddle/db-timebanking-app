@@ -15,16 +15,12 @@ following requirements:
 - Users can log into their account
 - Logged in users can log out of their account
 - The main page of the app shows:
-  - A set of statistics - total number of hours banked, total number of tasks , and average speed
-    across all jogs
-  - A 'add new jogging time' button
-  - A list of every previous jogging time
-- Clicking on the 'add new jogging time' button takes the user to a form where
-  they can create jogging times
-- Clicking on an existing jogging time takes the user to a form where they can
-  edit or delete the time
-- Improve the general app security through e.g. form validations, revising the
-  login system, etc.
+  - A set of statistics - total number of hours banked, total number of tasks , and average time spent on tasks
+  - An 'add new contribution' button
+  - A list of every previous contribution
+- Clicking on the 'add new contribution' button takes the user to a form where they can log their contributions
+- Clicking on an existing contribution takes the user to a form where they can edit or delete the time
+- Improve the general app security through e.g. form validations, revising the login system, etc.
 
 Additional requirements (the UI for these has not been created yet):
 
@@ -32,21 +28,19 @@ Additional requirements (the UI for these has not been created yet):
 - Users can follow other users
 - Users can see a list of the users they follow
 - Users can see a list of thier followers
-- Users can see a timeline of Community Timebank from people they follow
-- Users can see a ranking of them compared to they follow - who has the fastest
-  speed, most distance, etc.
+- Users can see a timeline of community tasks from people they follow
+- Users can see a ranking of them compared to they follow - who has completed the most tasks, logged the most hours, etc.
 
 ## Getting Started
 
 To get started, fork the repo in GitHub. Then, clone it to your own computer.
-Run `npm install` to get all the dependencies set up. Run `npm start` to start
-the app.
+
+Run `npm install` to get all the dependencies set up. Run `npm start` to start the app.
 
 > **Note:** running `npm start` will make the app automatically restart when you
 > make changes - no need to constantly stop and restart the server
 
-At first, the app probably won't run. You need to edit database.sqlite to add a
-`user` table.
+At first, the app probably won't run. You need to edit database.sqlite to add a `user` table.
 
 ## Important SQLite thing!!!
 
@@ -68,8 +62,7 @@ If you don't do this, your ids won't work properly.
 
 ### Key Files
 
-- `models/User.js` - the User model class. Contains several static methods for
-  inserting and querying users from the database
+- `models/User.js` - the User model class. Contains several static methods for inserting and querying users from the database
 - `public/` - any files you put in here will get served publicly
   - `public/tailwind.css` - a CSS framework used to style the app. See
     https://tailwindcss.com/ for more information.
@@ -77,19 +70,16 @@ If you don't do this, your ids won't work properly.
   [Handlebars](https://handlebarsjs.com/) to include our data in our HTML pages
   - `views/create-account.html` - the template for the create account form
   - `views/create-time.html` - the template for the create new jogging time form
-  - `views/edit-time.html` - the template for the edit jogging time form
-  - `views/list-times.html` - the template for the main page of the app, which
-    lists all jogging times
+  - `views/edit-time.html` - the template for the edit contributions form
+  - `views/list-times.html` - the template for the main page of the app, which lists all contributions
   - `views/sign-in.html` - the template for the sign-in form
 - `database.js` - sets up the database. This uses
   [sql.js](https://github.com/kripken/sql.js)
-- `database.sqlite` - the database + some helper functions to make working with
-  it easier
+- `database.sqlite` - the database + some helper functions to make working with it easier
 - `routes.js` - what to do for each route (method and URL) in the app
 - `server.js` - sets everything up and starts the app
 
-To implement all of the initial requirements, the only files you should need to
-touch are:
+To implement all of the initial requirements, the only files you should need to touch are:
 
 - `models/` - this is where all our database interaction happens
 - `routes.js` - the brains of our app - what each page and form does
