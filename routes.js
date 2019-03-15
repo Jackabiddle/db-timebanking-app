@@ -93,40 +93,37 @@ routes.get('/times', function(req, res) {
   var loggedInUser = User.findById(req.cookies.userId)
 
   // fake stats - TODO: get real stats from the database
-  var totalDistance = 13.45
-  var avgSpeed = 5.42
-  var totalTime = 8.12322
+  var totalTasks = 13.45
+  var avgHours = 5.42
+  var totalHours = 8.12322
 
   res.render('list-times.html', {
     user: loggedInUser,
     stats: {
-      totalDistance: totalDistance.toFixed(2),
-      totalTime: totalTime.toFixed(2),
-      avgSpeed: avgSpeed.toFixed(2)
+      totalTasks: totalTasks.toFixed(2),
+      totalHours: totalHours.toFixed(2),
+      avgHours: avgHours.toFixed(2)
     },
 
-    // fake times: TODO: get the real jog times from the db
+    // fake times: TODO: get the real contributions from the db
     times: [
       {
         id: 1,
         startTime: '4:36pm 1/11/18',
-        duration: 12.23,
-        distance: 65.43,
-        avgSpeed: 5.34
+        task: 'Planting flowers in the communal garden',
+        duration: 2.1
       },
       {
         id: 2,
         startTime: '2:10pm 3/11/18',
-        duration: 67.4,
-        distance: 44.43,
-        avgSpeed: 0.66
+        task: 'Coaching the children\'s football team',
+        duration: 4.5
       },
       {
         id: 3,
         startTime: '3:10pm 4/11/18',
-        duration: 67.4,
-        distance: 44.43,
-        avgSpeed: 0.66
+        task: 'Cooking for elderly neighbours',
+        duration: 3.5
       }
     ]
   })
@@ -159,7 +156,7 @@ routes.get('/times/:id', function(req, res) {
   console.log('get time', timeId)
 
   // TODO: get the real time for this id from the db
-  var jogTime = {
+  var taskRecord = {
     id: timeId,
     startTime: formatDateForHTML('2018-11-4 15:17'),
     duration: 67.4,
@@ -167,7 +164,7 @@ routes.get('/times/:id', function(req, res) {
   }
 
   res.render('edit-time.html', {
-    time: jogTime
+    time: taskRecord
   })
 })
 

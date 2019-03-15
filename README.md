@@ -1,7 +1,7 @@
-# Jogging Times App
+# Timebanking App
 
 You've been hired to implement the backend and database for a new app that
-allows joggers to track their runs. A front-end developer has already created
+allows members of a community to log the hours they spend on community tasks. A front-end developer has already created
 the UI for the app, but right now it's populated with dummy data - fake,
 hard-coded information to make it look right.
 
@@ -15,7 +15,7 @@ following requirements:
 - Users can log into their account
 - Logged in users can log out of their account
 - The main page of the app shows:
-  - A set of statistics - total distance, total duration, and average speed
+  - A set of statistics - total number of hours banked, total number of tasks , and average speed
     across all jogs
   - A 'add new jogging time' button
   - A list of every previous jogging time
@@ -32,7 +32,7 @@ Additional requirements (the UI for these has not been created yet):
 - Users can follow other users
 - Users can see a list of the users they follow
 - Users can see a list of thier followers
-- Users can see a timeline of jog times from people they follow
+- Users can see a timeline of Community Timebank from people they follow
 - Users can see a ranking of them compared to they follow - who has the fastest
   speed, most distance, etc.
 
@@ -80,7 +80,7 @@ If you don't do this, your ids won't work properly.
   - `views/edit-time.html` - the template for the edit jogging time form
   - `views/list-times.html` - the template for the main page of the app, which
     lists all jogging times
-  - `views/sing-in.html` - the template for the sign-in form
+  - `views/sign-in.html` - the template for the sign-in form
 - `database.js` - sets up the database. This uses
   [sql.js](https://github.com/kripken/sql.js)
 - `database.sqlite` - the database + some helper functions to make working with

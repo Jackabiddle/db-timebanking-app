@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Jog Times</title>
+    <title>Community Timebank</title>
 
     <!-- Tailwind.css is a CSS library. Read the docs here: -->
     <!-- https://tailwindcss.com/docs/what-is-tailwind -->
@@ -14,7 +14,7 @@
         class="mx-auto h-16 p-4 flex items-center justify-between"
         style="width: 800px"
       >
-        <h2>Jog Times</h2>
+        <h2>Community Timebank</h2>
         <div>
           Signed in as {{ user.name }} ({{ user.email }})
           <a
@@ -36,11 +36,11 @@
           class="m-4 p-6 rounded-lg bg-white flex-1 shadow flex flex-col-reverse"
         >
           <h3 class="uppercase text-sm text-indigo-light font-semibold">
-            Total Distance
+            Total Number of Tasks
           </h3>
           <div class="text-5xl text-indigo font-semibold">
-            {{ stats.totalDistance }}
-            <span class="text-grey-dark uppercase text-base -ml-2">km</span>
+            {{ stats.totalTasks }}
+            <span class="text-grey-dark uppercase text-base -ml-2">tasks completed</span>
           </div>
         </div>
 
@@ -48,10 +48,10 @@
           class="m-4 p-6 rounded-lg bg-white flex-1 shadow flex flex-col-reverse"
         >
           <h3 class="uppercase text-sm text-blue-light font-semibold">
-            Total Time
+            Total Hours
           </h3>
           <div class="text-5xl text-blue font-semibold">
-            {{ stats.totalTime }}
+            {{ stats.totalHours }}
             <span class="text-grey-dark uppercase text-base -ml-2">hrs</span>
           </div>
         </div>
@@ -60,10 +60,10 @@
           class="m-4 p-6 rounded-lg bg-white flex-1 shadow flex flex-col-reverse"
         >
           <h3 class="uppercase text-sm text-teal-light font-semibold">
-            Average Speed
+            Average Number of Hours per Task
           </h3>
           <div class="text-5xl text-teal font-semibold">
-            {{ stats.avgSpeed }}
+            {{ stats.avgHours }}
             <span class="text-grey-dark uppercase text-base -ml-2">km/h</span>
           </div>
         </div>
@@ -76,7 +76,7 @@
           href="/times/new"
           class="flex-auto w-64 m-4 p-5 bg-purple-light shadow rounded-lg text-3xl text-white no-underline flex items-center justify-center text-center"
         >
-          Add new time
+          Add new contribution
         </a>
 
         {{#each times}}
@@ -88,25 +88,16 @@
             {{ startTime }}
           </h3>
           <p class="text-xl mt-2">
-            {{ distance }}
+            {{ task }}
             <span
               class="uppercase text-sm text-grey-darker font-semibold -ml-1"
             >
-              km
             </span>
-            in {{ duration }}
+            for {{ duration }}
             <span
               class="uppercase text-sm text-grey-darker font-semibold -ml-1"
             >
               hrs
-            </span>
-          </p>
-          <p class="text-xl mt-1">
-            Avg. speed: {{ avgSpeed }}
-            <span
-              class="uppercase text-sm text-grey-darker font-semibold -ml-1"
-            >
-              km/hr
             </span>
           </p>
         </a>
