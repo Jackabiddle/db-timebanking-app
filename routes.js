@@ -15,7 +15,7 @@ function formatDateForHTML(date) {
 routes.get('/', function(req, res) {
   if (req.cookies.userId) {
     // if we've got a user id, assume we're logged in and redirect to the app:
-    res.redirect('/times')
+    res.redirect('/contributions')
   } else {
     // otherwise, redirect to login
     res.redirect('/sign-in')
@@ -43,7 +43,7 @@ routes.post('/create-account', function(req, res) {
   res.cookie('userId', userId)
 
   // redirect to the logged in page
-  res.redirect('/times')
+  res.redirect('/contributions')
 })
 
 // show the sign-in page
@@ -64,7 +64,7 @@ routes.post('/sign-in', function(req, res) {
       // the hashes match! set the log in cookie
       res.cookie('userId', user.id)
       // redirect to main app:
-      res.redirect('/times')
+      res.redirect('/contributions')
     } else {
       // if the username and password don't match, say so
       res.render('sign-in.html', {
@@ -88,25 +88,29 @@ routes.get('/sign-out', function(req, res) {
   res.redirect('/sign-in')
 })
 
-// list all job times
-routes.get('/times', function(req, res) {
+// list all job contributions
+routes.get('/contributions', function(req, res) {
   var loggedInUser = User.findById(req.cookies.userId)
+  if (!loggedInUser) {
+    res.redirect('/sign-in')
+    return;
+  }
 
   // fake stats - TODO: get real stats from the database
-  var totalTasks = 13.45
-  var avgHours = 5.42
-  var totalHours = 8.12322
+  var totalTasks = 3
+  var avgHours = 3
+  var totalHours = 9
 
-  res.render('list-times.html', {
+  res.render('list-contributions.html', {
     user: loggedInUser,
     stats: {
-      totalTasks: totalTasks.toFixed(2),
+      totalTasks: totalTasks.toFixed(0),
       totalHours: totalHours.toFixed(2),
       avgHours: avgHours.toFixed(2)
     },
 
-    // fake times: TODO: get the real contributions from the db
-    times: [
+    // fake contributions: TODO: get the real contributions from the db
+    contributions: [
       {
         id: 1,
         startTime: '4:36pm 1/11/18',
@@ -129,68 +133,68 @@ routes.get('/times', function(req, res) {
   })
 })
 
-// show the create time form
-routes.get('/times/new', function(req, res) {
+// show the create contribution form
+routes.get('/contributions/new', function(req, res) {
   // this is hugely insecure. why?
   var loggedInUser = User.findById(req.cookies.userId)
 
-  res.render('create-time.html', {
+  res.render('create-contribution.html', {
     user: loggedInUser
   })
 })
 
-// handle the create time form
-routes.post('/times/new', function(req, res) {
+// handle the create contribution form
+routes.post('/contributions/new', function(req, res) {
   var form = req.body
 
-  console.log('create time', form)
+  console.log('create contribution', form)
 
-  // TODO: save the new time
+  // TODO: save the new contribution
 
-  res.redirect('/times')
+  res.redirect('/contributions')
 })
 
-// show the edit time form for a specific time
-routes.get('/times/:id', function(req, res) {
-  var timeId = req.params.id
-  console.log('get time', timeId)
+// show the edit contribution form for a specific contribution
+routes.get('/contributions/:id', function(req, res) {
+  var contributionId = req.params.id
+  console.log('get contribution', contributionId)
 
-  // TODO: get the real time for this id from the db
-  var taskRecord = {
-    id: timeId,
-    startTime: formatDateForHTML('2018-11-4 15:17'),
-    duration: 67.4,
-    distance: 44.43
+  // TODO: get the real contribution for this id from the db
+  var contributionRecord = {
+    id: contributionId,
+    startTime: formatDateForHTML('2018-11-4 19:00'),
+    task: 'Babysit for Maria on the fifth floor',
+    duration: 3,
   }
 
-  res.render('edit-time.html', {
-    time: taskRecord
+  res.render('edit-contribution.html', {
+    contribution: contributionRecord
   })
 })
 
-// handle the edit time form
-routes.post('/times/:id', function(req, res) {
-  var timeId = req.params.id
+// handle the edit contribution form
+routes.post('/contributions/:id', function(req, res) {
+  var contributionId = req.params.id
   var form = req.body
 
-  console.log('edit time', {
-    timeId: timeId,
+  console.log('edit contribution', {
+    contributionId: contributionId,
     form: form
   })
 
-  // TODO: edit the time in the db
+  // TODO: edit the contribution in the db
 
-  res.redirect('/times')
+  res.redirect('/contributions')
 })
 
-// handle deleteing the time
-routes.get('/times/:id/delete', function(req, res) {
-  var timeId = req.params.id
-  console.log('delete time', timeId)
+// handle deleteing the contribution
+routes.get('/contributions/:id/delete', function(req, res) {
+  var contributionId = req.params.id
+  console.log('delete contribution', contributionId)
 
-  // TODO: delete the time
+  // TODO: delete the contribution
 
-  res.redirect('/times')
+  res.redirect('/contributions')
 })
 
 module.exports = routes

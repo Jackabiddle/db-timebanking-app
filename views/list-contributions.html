@@ -40,7 +40,7 @@
           </h3>
           <div class="text-5xl text-indigo font-semibold">
             {{ stats.totalTasks }}
-            <span class="text-grey-dark uppercase text-base -ml-2">tasks completed</span>
+            <span class="text-grey-dark uppercase text-base -ml-2 leading-none">tasks</span>
           </div>
         </div>
 
@@ -64,7 +64,6 @@
           </h3>
           <div class="text-5xl text-teal font-semibold">
             {{ stats.avgHours }}
-            <span class="text-grey-dark uppercase text-base -ml-2">km/h</span>
           </div>
         </div>
       </section>
@@ -73,16 +72,16 @@
         class="flex flex-wrap border border-grey-light border-l-0 border-r-0 border-b-0 mt-6 pt-6"
       >
         <a
-          href="/times/new"
+          href="/contributions/new"
           class="flex-auto w-64 m-4 p-5 bg-purple-light shadow rounded-lg text-3xl text-white no-underline flex items-center justify-center text-center"
         >
           Add new contribution
         </a>
 
-        {{#each times}}
+        {{#each contributions}}
         <a
           class="flex-auto w-64 m-4 p-5 bg-white shadow rounded-lg text-black no-underline"
-          href="/times/{{ id }}"
+          href="/contributions/{{ id }}"
         >
           <h3 class="text-grey-darker uppercase text-base font-normal">
             {{ startTime }}

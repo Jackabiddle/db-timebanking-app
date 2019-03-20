@@ -1,14 +1,10 @@
 # Timebanking App
 
-You've been hired to implement the backend and database for a new app that
-allows members of a community to log the hours they spend on community tasks. A front-end developer has already created
-the UI for the app, but right now it's populated with dummy data - fake,
-hard-coded information to make it look right.
+You've been hired to implement the backend and database for a new app that allows members of a community to log the hours they spend on community tasks. A front-end developer has already created the UI for the app, but right now it's populated with dummy data - fake, hard-coded information to make it look right.
 
 There's also code for a basic (and quite insecure!) user login system.
 
-Your task is to implement the backend and database to allow the app to meet the
-following requirements:
+Your task is to implement the backend and database to allow the app to meet the following requirements:
 
 - Users can create accounts with a name, email address, and password
 - User passwords are stored securely according to best practise
@@ -24,23 +20,22 @@ following requirements:
 
 Additional requirements (the UI for these has not been created yet):
 
-- Users can delete thier accounts
+- Users can delete their accounts
 - Users can follow other users
 - Users can see a list of the users they follow
-- Users can see a list of thier followers
+- Users can see a list of their followers
 - Users can see a timeline of community tasks from people they follow
 - Users can see a ranking of them compared to they follow - who has completed the most tasks, logged the most hours, etc.
 
 ## Getting Started
 
-To get started, fork the repo in GitHub. Then, clone it to your own computer.
+Accept the Github classroom invitation which will create your own version of this repository. Clone it to your computer.
 
-Run `npm install` to get all the dependencies set up. Run `npm start` to start the app.
+Run `npm install` to get all the dependencies set up. Run `npm start` to start the app, or `npm run watch` to use nodemon to watch for changes and reload the server whenever you save a change (N.B. if you add new files you may need to quit the watch process and start it again).
 
-> **Note:** running `npm start` will make the app automatically restart when you
-> make changes - no need to constantly stop and restart the server
+There is one table in the database: a user table. You can view the contents of the database using a Database Management System (DBMS). If you can download software onto your computer, use [SQLiteBrowser](https://sqlitebrowser.org/). If you cannot, use [SQLiteOnline](https://sqliteonline.com/) (a browser-based DBMS for SQLite).
 
-At first, the app probably won't run. You need to edit database.sqlite to add a `user` table.
+To view the database in SQLite Online, choose File > Open DB and select database.sqlite from this repository. You can now run queries on the database (for example to create the tables your app requires). You can choose File > Save DB to download the database.sqlite file back into your project. 
 
 ## Important SQLite thing!!!
 
