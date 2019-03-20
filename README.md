@@ -24,7 +24,7 @@ Additional requirements (the UI for these has not been created yet):
 - Users can follow other users
 - Users can see a list of the users they follow
 - Users can see a list of their followers
-- Users can see a timeline of community tasks from people they follow
+- Users can see a timeline of community contributions from people they follow
 - Users can see a ranking of them compared to they follow - who has completed the most tasks, logged the most hours, etc.
 
 ## Getting Started
@@ -32,6 +32,16 @@ Additional requirements (the UI for these has not been created yet):
 Accept the Github classroom invitation which will create your own version of this repository. Clone it to your computer.
 
 Run `npm install` to get all the dependencies set up. Run `npm start` to start the app, or `npm run watch` to use nodemon to watch for changes and reload the server whenever you save a change (N.B. if you add new files you may need to quit the watch process and start it again).
+
+This repository contains an SQLite database implemented using sql.js. However, there is no requirement to use SQL. If you are feeling confident, you can complete the project using a database system of your choice. 
+
+### Documenting your work
+
+If you do make a decision to use an alternative database to the one provided, please update this README.md to give instructions to future developers on how it is configured.
+
+### Working with the provided SQLite database
+
+We are using [SQLite](https://www.sqlite.org/lang.html).
 
 There is one table in the database: a user table. You can view the contents of the database using a Database Management System (DBMS). If you can download software onto your computer, use [SQLiteBrowser](https://sqlitebrowser.org/). If you cannot, use [SQLiteOnline](https://sqliteonline.com/) (a browser-based DBMS for SQLite).
 
@@ -57,20 +67,21 @@ If you don't do this, your ids won't work properly.
 
 ### Key Files
 
-- `models/User.js` - the User model class. Contains several static methods for inserting and querying users from the database
+- `models/User.js` - the User model class. Contains several static methods for inserting and querying users from the database. Use this as a reference for how to create other models.
 - `public/` - any files you put in here will get served publicly
   - `public/tailwind.css` - a CSS framework used to style the app. See
     https://tailwindcss.com/ for more information.
 - `views/` - a set of HTML pages for each part of our app. These use
   [Handlebars](https://handlebarsjs.com/) to include our data in our HTML pages
   - `views/create-account.html` - the template for the create account form
-  - `views/create-time.html` - the template for the create new jogging time form
-  - `views/edit-time.html` - the template for the edit contributions form
-  - `views/list-times.html` - the template for the main page of the app, which lists all contributions
+  - `views/create-conribution.html` - the template for the create new contribution form
+  - `views/edit-contribution.html` - the template for the edit contributions form
+  - `views/list-contributions.html` - the template for the main page of the app, which lists all contributions
   - `views/sign-in.html` - the template for the sign-in form
 - `database.js` - sets up the database. This uses
   [sql.js](https://github.com/kripken/sql.js)
-- `database.sqlite` - the database + some helper functions to make working with it easier
+- `database.sqlite` - the database itself
+- `database.js` - some helper functions to make working with the database easier
 - `routes.js` - what to do for each route (method and URL) in the app
 - `server.js` - sets everything up and starts the app
 
@@ -78,7 +89,7 @@ To implement all of the initial requirements, the only files you should need to 
 
 - `models/` - this is where all our database interaction happens
 - `routes.js` - the brains of our app - what each page and form does
-- `database.sqlite` - you need to create the correct tables in here
+- `database.sqlite` - you need to create the correct tables in here. See the section "Working with the database" above.
 
 ### Interacting with the database
 
@@ -110,5 +121,6 @@ var insertedId = helpers.insert('INSERT INTO pets (name) VALUES (?)', ['rufus'])
 ### Final note
 
 There's a lot of code here! Some of it is using libraries you've never
-encountered before, so you may need to do some research. If you get stuck,
-remember to ask a colleague or coach!
+encountered before, so you may need to do some research. You have working examples of talking to the database inside models/User.js. Read the code carefully to understand it, and if you get stuck speak to a colleague or one of the lecturers.
+
+Happy coding!
